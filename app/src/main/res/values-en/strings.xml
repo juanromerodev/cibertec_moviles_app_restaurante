@@ -7,4 +7,14 @@
     <string name="btn_acceder">Access</string>
     <string name="btn_salir">Exit</string>
 
+    <!--Commit para probar el ejercicio de GIT -->
+    <string name="btn_limpiar">Limpiar</string>
+    <string name="btn_cancelar">Cancelar</string>
+    <string name="btn_ok">Ok</string>
+
+    <string name="btn_prueba">Prueba</string>
+
+
+    <string name="btn_prueba2">Prueba 2</string>
+    <string name="btn_prueba3">Prueba 3</string>
 </resources>
