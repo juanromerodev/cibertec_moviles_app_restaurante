@@ -13,6 +13,7 @@ class PantallaPrincipalActivity : AppCompatActivity() {
 
         val btnAcceder = findViewById<Button>(R.id.btnAcceder);
         val btnSalir: Button = findViewById(R.id.btnSalir);
+        val btnRegistrar: Button = findViewById(R.id.btnRegistrar);
 
         btnAcceder.setOnClickListener{
             val productScreen = Intent(this, PlatosActivity::class.java)
@@ -23,5 +24,9 @@ class PantallaPrincipalActivity : AppCompatActivity() {
             Toast.makeText(this, "Esta intentando salir de la APP", Toast.LENGTH_LONG).show();
         }
 
+        btnRegistrar.setOnClickListener {
+            val registroScreen = Intent(this, RegistroActivity::class.java)
+            startActivity(registroScreen)
+        }
     }
 }
