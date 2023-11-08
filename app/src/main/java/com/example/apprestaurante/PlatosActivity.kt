@@ -11,12 +11,15 @@ import android.view.Window
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class PlatosActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_platos)
 
+        //CODIGO PARA BOTON CERRAR SESION
         val btnCerrarSesion: Button = findViewById(R.id.btnCerrarSesion)
 
         btnCerrarSesion.setOnClickListener{
@@ -28,6 +31,24 @@ class PlatosActivity : AppCompatActivity() {
 
         }
 
+        //CARGAR PLATOS DEL RECICLER VIEW
+        val platosRecycler:RecyclerView = findViewById(R.id.rv_list_platos)
+        platosRecycler.layoutManager = LinearLayoutManager(this)
+
+        val data = ArrayList<itemsViewModel>()
+        //Aqui seobtiene informacion de alguna fuente
+
+        for ( i in 1 .. 20){
+            data.add(
+                itemsViewModel(
+                R.drawable.bg_restaurante_background,
+                "Plato de comida Nro"+i,
+                "Descripcion "+i)
+            )
+        }
+
+        val adapter = CustomAdapter(data)
+        platosRecycler.adapter = adapter
     }
 
     private fun showModalConfirmExit(titleMsg: String, bodyMsg: String) {
