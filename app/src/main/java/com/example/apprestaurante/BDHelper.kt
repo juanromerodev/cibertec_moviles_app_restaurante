@@ -2,10 +2,12 @@ package com.example.apprestaurante
 
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-class BDHelper (context: Context, factory: SQLiteDatabase.CursorFactory) : SQLiteOpenHelper (context, DATABASE_NAME, factory, DATABASE_VERSION){
+class BDHelper(context: Context, factory: SQLiteDatabase.CursorFactory?)
+    : SQLiteOpenHelper (context, DATABASE_NAME, factory, DATABASE_VERSION){
     companion object {
         private val DATABASE_NAME = "BD_Restaurante"
         private val DATABASE_VERSION = 1
@@ -25,7 +27,6 @@ class BDHelper (context: Context, factory: SQLiteDatabase.CursorFactory) : SQLit
                     COLUMN_CONTRASENIA + " TEXT" + " )"
                     )
         db.execSQL(queryCreateTable)
-        db.close()
     }
 
     fun CrearRegistro (correo:String, usuario:String, contrasenia:String){
@@ -38,8 +39,21 @@ class BDHelper (context: Context, factory: SQLiteDatabase.CursorFactory) : SQLit
         val db = this.writableDatabase
 
         db.insert(TABLA_USUARIOS,null,values)
-        db.close()
     }
+
+    fun listarTodoRegistros () : Cursor?{
+        val db = this.readableDatabase
+
+        return db.rawQuery("SELECT * FROM "+ TABLA_USUARIOS, null)
+    }
+
+    fun Acceder(usuario: String, contrasenia: String): Cursor?{
+        val db = this.readableDatabase
+        val sql =
+            "SELECT * FROM $TABLA_USUARIOS WHERE $COLUMN_USUARIO = ? AND $COLUMN_CONTRASENIA = ?"
+        return db.rawQuery(sql, arrayOf(usuario, contrasenia))
+    }
+
     override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
         TODO("Not yet implemented")
     }

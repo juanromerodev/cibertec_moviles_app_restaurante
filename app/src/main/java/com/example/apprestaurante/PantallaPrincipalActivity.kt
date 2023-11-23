@@ -16,8 +16,8 @@ class PantallaPrincipalActivity : AppCompatActivity() {
         val btnRegistrar: Button = findViewById(R.id.btnRegistrar);
 
         btnAcceder.setOnClickListener{
-            val productScreen = Intent(this, PlatosActivity::class.java)
-            startActivity(productScreen)
+            val loginScreen = Intent(this, LoginActivity::class.java)
+            startActivity(loginScreen)
         };
 
         btnSalir.setOnClickListener {
