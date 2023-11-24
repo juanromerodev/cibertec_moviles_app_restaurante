@@ -39,6 +39,14 @@
     </androidx.cardview.widget.CardView>
 
     <Button
+        android:id="@+id/btnVerLibrosCocina"
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:backgroundTint="@color/main_orange"
+        android:layout_height="wrap_content"
+        android:text="Ver libros de cocina" />
+
+    <Button
         android:id="@+id/btnCerrarSesion"
         android:layout_margin="20dp"
         android:layout_width="match_parent"

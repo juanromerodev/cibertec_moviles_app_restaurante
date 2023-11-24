@@ -49,6 +49,16 @@ class PlatosActivity : AppCompatActivity() {
 
         val adapter = CustomAdapter(data)
         platosRecycler.adapter = adapter
+
+        // INI REDIRECCION A CONSUMO REST
+
+        val btnVerLibros: Button = findViewById(R.id.btnVerLibrosCocina)
+
+        btnVerLibros.setOnClickListener {
+            val pantallaVerLibros = Intent(this, LibrosActivity::class.java)
+            startActivity(pantallaVerLibros)
+        }
+        // FIN REDIRECCION A CONSUMO REST
     }
 
     private fun showModalConfirmExit(titleMsg: String, bodyMsg: String) {
